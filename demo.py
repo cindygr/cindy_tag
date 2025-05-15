@@ -281,6 +281,7 @@ def run_model(model, rgbs, S, device, rank=0, sw=None):
     cH, cW = model.module.H, model.module.W
     
     # anchor with zero-vel on anchor
+    print(f"{xys_e.shape}, {xys_g.shape}, S {S}")
     xys_e = 0*xys_g
     for b in range(B):
         prompt_b = torch.sum((prompts_g[b].reshape(T,-1)>0).float(), dim=1) > 0 # T
