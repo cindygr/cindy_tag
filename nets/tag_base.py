@@ -203,7 +203,7 @@ class VisionTransformer(nn.Module):
             num_classes: int = 1000,
             representation_size: Optional[int] = None,
             norm_layer: Callable[..., torch.nn.Module] = partial(nn.LayerNorm, eps=1e-6),
-            conv_stem_configs: None,
+            conv_stem_configs =None
     ):
         super().__init__()
         # _log_api_usage_once(self)
