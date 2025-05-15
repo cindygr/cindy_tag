@@ -599,7 +599,7 @@ class ConvDecoder3d(nn.Module):
     
 class Tag(nn.Module):
     def __init__(self, S, H, W, tstride=4, sstride=32, scales=[0.25,1.0]):
-        super(Tip, self).__init__()
+        super(nn.Module, self).__init__()
         
         self.S = S
         self.H = H
