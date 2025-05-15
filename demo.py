@@ -245,7 +245,7 @@ def run_model(model, rgbs, S, device, rank=0, sw=None):
     if S > T:
         S = T
 
-    xys_g = torch.ones((B,T,2), dtype=torch.float32, device=device)
+    xys_g = torch.ones((B,S,2), dtype=torch.float32, device=device)
     xys_g[:,:,0] = 128
     xys_g[:,:,1] = 126
 
@@ -281,7 +281,7 @@ def run_model(model, rgbs, S, device, rank=0, sw=None):
     cH, cW = model.module.H, model.module.W
     
     # anchor with zero-vel on anchor
-    print(f"{xys_e.shape}, {xys_g.shape}, S {S}")
+    print(f"{xys_e.shape}, {xys_g.shape}, S {S} T {T}")
     xys_e = 0*xys_g
     for b in range(B):
         prompt_b = torch.sum((prompts_g[b].reshape(T,-1)>0).float(), dim=1) > 0 # T
