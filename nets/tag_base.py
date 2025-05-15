@@ -601,7 +601,8 @@ class Tag(nn.Module):
     def __init__(self, S, H, W, tstride=4, sstride=32, scales=[0.25,1.0]):
         super(nn.Module, self).__init__()
         nn.Module.__init__(self)
-        
+
+        print(f"Initialize {S} {H} {W}")
         self.S = S
         self.H = H
         self.W = W
@@ -717,6 +718,7 @@ class Tag(nn.Module):
         sS, sH, sW = S//self.tstride, cH//self.sstride, cW//self.sstride
         fH, fW = cH//self.final_stride, cW//self.final_stride
 
+        print(f"{S} {self.S}")
         assert(S <= self.S)
 
         inputs = torch.cat([rgbs, prompts], dim=2).reshape(B,S,4,cH,cW).permute(0,2,1,3,4) # B,C,S,H,W
