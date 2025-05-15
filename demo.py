@@ -412,7 +412,7 @@ def main(
         target_shape=(224,224),
         B=1, # batchsize
         S=128, # data seqlen
-        S_model=64, 
+        S_model=256,
         K=8, # inference iters
         max_iters=100,
         log_freq=1,
